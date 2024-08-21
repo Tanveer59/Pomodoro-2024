@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 
-const Timer = ({ time,callBack }: { time: number, callBack: () => void }) => {
+const Timer = ({ time, callBack }: { time: number, callBack: () => void }) => {
   const [secondsLeft, setSecondsLeft] = useState(time * 60); // Convert minutes to seconds
   const [isActive, setIsActive] = useState(false);
   const [dynTitle, setDynTitle] = useState('');
@@ -24,10 +24,10 @@ const Timer = ({ time,callBack }: { time: number, callBack: () => void }) => {
           if (prevSeconds <= 0) {
             clearInterval(intervalRef.current as ReturnType<typeof setInterval>);
             setIsActive(false); // Stop the timer
-            var aud = new Audio('overvelmed.mp3');
+            const aud = new Audio('overvelmed.mp3');
             aud.play();
             callBack();
-            return 0;  
+            return 0;
           }
           return prevSeconds - 1;
         });
@@ -41,7 +41,7 @@ const Timer = ({ time,callBack }: { time: number, callBack: () => void }) => {
         clearInterval(intervalRef.current as ReturnType<typeof setInterval>);
       }
     };
-  }, [isActive, secondsLeft]);
+  }, [isActive, secondsLeft, callBack]);
 
   const handleStart = () => {
     if (secondsLeft > 0) {
@@ -59,18 +59,19 @@ const Timer = ({ time,callBack }: { time: number, callBack: () => void }) => {
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;
 
-  useEffect(()=>{
-    setDynTitle(`${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds} - ${minutes > 20 ? "Pomodoro - Time to Focus " : 'Pomodoro - Time to rest' }`);
-    document.title = `${dynTitle}`; 
-  }, [secondsLeft, time]);  
+  useEffect(() => {
+    const formattedTitle = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds} - ${minutes > 20 ? "Pomodoro - Time to Focus" : "Pomodoro - Time to rest"}`;
+    setDynTitle(formattedTitle);
+    document.title = formattedTitle;
+  }, [minutes, seconds]);
 
   return (
     <div className='flex flex-col gap-2 items-center'>
-      <h2 className='babas text-8xl md:text-9xl '>
+      <h2 className='babas text-8xl md:text-9xl'>
         {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </h2>
       <button className={`p-2 pl-4 pr-4 bg-white text-black text-lg rounded-lg btn-shodow ${isActive ? 'b-shadow' : 'shadow-none'}`} onClick={isActive ? endHandleStart : handleStart}>
-        {isActive ? "Stop Pomo" : 'Start Pomo'}
+        {isActive ? "Stop Pomo" : "Start Pomo"}
       </button>
     </div>
   );
