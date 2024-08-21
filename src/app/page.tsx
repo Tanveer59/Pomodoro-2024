@@ -18,6 +18,8 @@ export default function Home() {
                 src="./tanveerlg.svg"
                 className="w-12 h-12 md:w-12 md:h-12"
                 alt="logo"
+                width={10}
+                height={10}
               />
             </a>
           </div>
