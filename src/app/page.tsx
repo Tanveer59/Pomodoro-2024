@@ -3,7 +3,7 @@ import TextArea from "@/components/Textarea";
 import { PiArrowRight } from "react-icons/pi";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa6";
-
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
         <div className="pt-4 pb-3 w-[90%] md:w-[85%] lg:w-[30%] flex justify-between items-center border-b border-opacity-25 border-gray-800">
           <div>
             <a href="">
-              <img
+              <Image
                 src="./tanveerlg.svg"
                 className="w-12 h-12 md:w-12 md:h-12"
                 alt="logo"
