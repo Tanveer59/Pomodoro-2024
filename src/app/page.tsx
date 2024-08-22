@@ -50,6 +50,7 @@ export default function Home() {
             <span className="inline-flex items-center"> Short Break | Time to Rest&nbsp;<PiArrowRight /> &nbsp;</span>
             <span className="inline-flex items-center"> Pomodoro&nbsp;<PiArrowRight /> &nbsp;</span>
             <span className="inline-flex items-center"> Short Break&nbsp;<PiArrowRight /> &nbsp;</span>
+            <span className="inline-flex items-center"> Pomodoro&nbsp;<PiArrowRight /> &nbsp;</span>
             <span className="inline-flex items-center"> Long Break&nbsp;<PiArrowRight /> &nbsp;</span>
             <span className="inline-flex items-center"> Repeat ... &nbsp;</span>
           </p>
