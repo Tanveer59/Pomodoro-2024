@@ -77,11 +77,11 @@ export default function PomoTimer() {
   }, [selectedMode]);
 
   const timerDurations: Record<Mode, number> = {
-    Pomodoro: 0.1,
-    "Short Break": 0.2,
-    "Long Break": 0.3,
+    Pomodoro: 25,
+    "Short Break": 5,
+    "Long Break": 15,
   };
-
+sd
   const alogoRithem = () => {
     if (selectedMode === "Pomodoro") {
       if(selectedMode === "Pomodoro" && cycleCount === 3){
