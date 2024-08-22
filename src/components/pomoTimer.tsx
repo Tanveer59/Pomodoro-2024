@@ -77,24 +77,37 @@ export default function PomoTimer() {
   }, [selectedMode]);
 
   const timerDurations: Record<Mode, number> = {
-    Pomodoro: 25,
-    "Short Break": 5,
-    "Long Break": 15,
+    Pomodoro: 0.1,
+    "Short Break": 0.2,
+    "Long Break": 0.3,
   };
 
-  const handleTimerComplete = () => {
+  const alogoRithem = () => {
     if (selectedMode === "Pomodoro") {
-      setSelectedMode("Short Break");
+      if(selectedMode === "Pomodoro" && cycleCount === 3){
+        setSelectedMode("Long Break"); 
+        setCycleCount(0);     
+      }else{
+        setSelectedMode("Short Break");
+      }
     } else if (selectedMode === "Short Break") {
       if (cycleCount < 1) {
         setSelectedMode("Pomodoro");
         setCycleCount(cycleCount + 1);
+      } else if(cycleCount === 1) {
+        setSelectedMode("Pomodoro");
+        setCycleCount(cycleCount + 1);
+
+      } else if(cycleCount === 2){
+        setSelectedMode("Pomodoro");
+        setCycleCount(cycleCount + 1);
+
       } else {
-        setSelectedMode("Long Break");
-        setCycleCount(0); // Reset cycle after Long Break
+        console.log(cycleCount + ' filnal');
+        setCycleCount(0); 
       }
     } else if (selectedMode === "Long Break") {
-      setSelectedMode("Pomodoro"); // Start new cycle after Long Break
+      setSelectedMode("Pomodoro"); 
     }
   };
 
@@ -112,7 +125,7 @@ export default function PomoTimer() {
           variants={variants}
           transition={{ duration: 0.5 }}
         >
-          <Timer callBack={handleTimerComplete} time={timerDurations[selectedMode]} />
+          <Timer callBack={alogoRithem} time={timerDurations[selectedMode]} />
         </motion.div>
       </div>
     </div>

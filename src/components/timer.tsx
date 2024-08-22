@@ -25,7 +25,7 @@ const Timer = ({ time, callBack }: { time: number, callBack: () => void }) => {
             clearInterval(intervalRef.current as ReturnType<typeof setInterval>);
             setIsActive(false); // Stop the timer
             const aud = new Audio('overvelmed.mp3');
-            aud.play();
+            // aud.play();
             callBack();
             return 0;
           }
